@@ -8,11 +8,55 @@ Single lib to allow RDStation integration on Javascript ES2015 projects.
 npm install rdstation
 ```
 
-## Use
+## Features
 
-For the current version only Event conversions can be done.
+- Contacts: class to work with RDStation Contact resource (the core Contact central resource)
+- Events: class to work with RDStation Event resource (opportunities, ecommerce carts, chats, etc)
 
-See RD Station docs for fields to pass on each event method.
+## Contacts
+
+RDStation Developer documentation:
+
+[https://developers.rdstation.com/pt-BR/reference/contacts](https://developers.rdstation.com/pt-BR/reference/contacts)
+
+```javascript
+import { Authentication, Contact } from 'rdstation';
+
+const clientId = 'Your RDStation app client id';
+const clientSecret = 'Your RDStation app client secret';
+const authCode = 'Code returned on callback'
+
+const auth = new Authentication(clientId, clientSecret);
+const accessToken = auth.getAccessToken(authCode);
+
+const contact = new Contact(accessToken);
+
+// Get by UUID
+const response = contact.get('5408c5a3-4711-4f2e-8d0b-13407a3e30f3');
+
+// Get by Email
+const response = contect.getByEmail('contact@example.org');
+
+// Update a contact (by UUID)
+const response = contact.update('5408c5a3-4711-4f2e-8d0b-13407a3e30f3', {
+    // fields of request body according to RDStation documentation
+});
+
+// Upsert a contact (bt UUID identifier)
+const response = contact.upsert('uuid', '5408c5a3-4711-4f2e-8d0b-13407a3e30f3', {
+    // fields of request body according to RDStation documentation
+});
+
+// Upsert a contact (by email identifier)
+const response = contact.upsert('email', 'contact@example.org', {
+    // fields of request body according to RDStation documentation
+});
+
+```
+
+## Events
+
+RDStation Developer documentation:
 
 [https://developers.rdstation.com/pt-BR/reference/events](https://developers.rdstation.com/pt-BR/reference/events)
 

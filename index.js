@@ -6,7 +6,9 @@ import ResourceNotFound from './src/Exception/ResourceNotFound';
 import UnauthorizedRequest from './src/Exception/UnauthorizedRequest';
 
 import AccessToken from '.src/AccessToken';
+import ApiResource from './src/ApiResource';
 import Authentication from '.src/Authentication';
+import Contact from './src/Contact';
 import Event from '.src/Event';
 import Request from '.src/Request';
 
@@ -18,7 +20,9 @@ export {
     ResourceNotFound,
     UnauthorizedRequest,
     AccessToken,
+    ApiResource,
     Authentication,
+    Contact,
     Event,
     Request
 };

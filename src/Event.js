@@ -1,7 +1,8 @@
+import ApiResource from './ApiResource';
 import Exception from "./Exception/Exception";
 import Request from "./Request";
 
-export default class Event {
+export default class Event extends ApiResource {
     static EVENT_CONVERSION = 'CONVERSION';
     static EVENT_OPPORTUNITY = 'OPPORTUNITY';
     static EVENT_OPPORTUNITY_WON = 'SALE';
@@ -14,18 +15,6 @@ export default class Event {
     static EVENT_CHAT_FINISHED = 'CHAT_FINISHED';
 
     static CDP_FAMILY = 'CDP';
-
-    constructor($accessToken) {
-        this.accessToken = $accessToken;
-    }
-
-    get accessToken() {
-        return this.accessToken;
-    }
-
-    set accessToken(val) {
-        this.accessToken = val;
-    }
 
     /**
      * Standard Event Conversion
@@ -252,26 +241,6 @@ export default class Event {
             payload: payload
         };
 
-        let response = {};
-
-        try {
-            response = Request.send('POST', '/platform/events', fields, {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${this.accessToken.getToken()}`
-            });
-        } catch (e) {
-            // invalid access token? refresh and try again
-            if (e.hasErrorType(Exception.TYPE_UNAUTHORIZED)) {
-                this.accessToken.refresh();
-                response = Request.send('POST', '/platform/events', fields, {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${this.accessToken.getToken()}`
-                });
-            } else {
-                throw $e;
-            }
-        }
-
-        return response;
+        return this.request('POST', '/platform/events', fields);
     }
 }
