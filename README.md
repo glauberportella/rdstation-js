@@ -35,7 +35,7 @@ const contact = new Contact(accessToken);
 const response = contact.get('5408c5a3-4711-4f2e-8d0b-13407a3e30f3');
 
 // Get by Email
-const response = contect.getByEmail('contact@example.org');
+const response = contact.getByEmail('contact@example.org');
 
 // Update a contact (by UUID)
 const response = contact.update('5408c5a3-4711-4f2e-8d0b-13407a3e30f3', {

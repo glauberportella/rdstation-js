@@ -28,7 +28,7 @@ export default class Authentication {
             refresh_token: refreshToken
         };
 
-        const response = Request.send('POST', '/auth/token', $fields, {
+        const response = Request.send('POST', '/auth/token', fields, {
             'Content-Type': 'application/json'
         });
 

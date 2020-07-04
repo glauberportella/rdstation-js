@@ -29,7 +29,7 @@ export default class Request {
         const response =  await fetch(url, {
             method,
             headers: new Headers(headers),
-            ...initOpts,
+            ...fetchInitOpts,
             body
         });
 
