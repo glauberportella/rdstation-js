@@ -1,0 +1,27 @@
+{
+  "name": "rdstation",
+  "version": "1.0.0",
+  "description": "RDStation Integration via current RD API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/glauberportella/rdstation-js.git"
+  },
+  "keywords": [
+    "RD",
+    "leads",
+    "marketing",
+    "library",
+    "integration",
+    "digital"
+  ],
+  "author": "Glauber Portella <glauberportella@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/glauberportella/rdstation-js/issues"
+  },
+  "homepage": "https://github.com/glauberportella/rdstation-js#readme"
+}
