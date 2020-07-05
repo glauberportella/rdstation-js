@@ -1,6 +1,4 @@
 import ApiResource from './ApiResource';
-import Exception from "./Exception/Exception";
-import Request from "./Request";
 
 export default class Event extends ApiResource {
     static EVENT_CONVERSION = 'CONVERSION';

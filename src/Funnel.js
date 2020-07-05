@@ -1,3 +1,5 @@
+import ApiResource from './ApiResource';
+
 export default class Funnel extends ApiResource {
 
     /**
