@@ -8,12 +8,45 @@ Single lib to allow RDStation integration on Javascript ES2015 projects.
 npm install rdstation
 ```
 
+## Authentication
+
+RDStations states on developer documentation:
+
+**Step 1**:
+
+Create an app on the [RD Station App Store](https://appstore.rdstation.com/pt-BR/publisher?_ga=2.209926551.30393113.1593959357-841494551.1590426705)
+
+**Step 2**:
+
+Replace the URL fields below with the data you will get from the application. 
+
+`https://api.rd.services/auth/dialog?client_id={client_id}&redirect_url={redirect_url}`
+
+**Step 3**:
+
+Click on the link and log in to RD Station Marketing.
+
+**Step 4**:
+
+After login and confirmation of access, we will send the code to the callback URL.
+
+**Step 5**:
+
+Request `access_token` and` refresh_token` from the generated `code`, sending a request to our API.
+
+**Passo 6**:
+
+Ready! You can now send data to our API with the `access_token` received.
+
 ## Features
 
 - Contacts: class to work with RDStation Contact resource (the core Contact central resource)
 - Events: class to work with RDStation Event resource (opportunities, ecommerce carts, chats, etc)
+- Funnels: class to work with RDStation Funnel resource
 
-## Contacts
+## Library Resources
+
+### Contacts
 
 RDStation Developer documentation:
 
@@ -54,7 +87,7 @@ let response = contact.upsert('email', 'contact@example.org', {
 
 ```
 
-## Funnels
+### Funnels
 
 RDStation Developer documentation:
 
@@ -90,7 +123,7 @@ let response = funnel.update('contact@example.org', 'default', {
 
 ```
 
-## Events
+### Events
 
 RDStation Developer documentation:
 
