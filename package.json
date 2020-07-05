@@ -1,7 +1,7 @@
 {
   "name": "rdstation",
   "version": "1.0.0",
-  "description": "RDStation Integration via current RD API",
+  "description": "RDStation Javascript Integration Library for current RD API",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
