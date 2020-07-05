@@ -32,24 +32,60 @@ const accessToken = auth.getAccessToken(authCode);
 const contact = new Contact(accessToken);
 
 // Get by UUID
-const response = contact.get('5408c5a3-4711-4f2e-8d0b-13407a3e30f3');
+let response = contact.get('5408c5a3-4711-4f2e-8d0b-13407a3e30f3');
 
 // Get by Email
-const response = contact.getByEmail('contact@example.org');
+let response = contact.getByEmail('contact@example.org');
 
 // Update a contact (by UUID)
-const response = contact.update('5408c5a3-4711-4f2e-8d0b-13407a3e30f3', {
+let response = contact.update('5408c5a3-4711-4f2e-8d0b-13407a3e30f3', {
     // fields of request body according to RDStation documentation
 });
 
 // Upsert a contact (bt UUID identifier)
-const response = contact.upsert('uuid', '5408c5a3-4711-4f2e-8d0b-13407a3e30f3', {
+let response = contact.upsert('uuid', '5408c5a3-4711-4f2e-8d0b-13407a3e30f3', {
     // fields of request body according to RDStation documentation
 });
 
 // Upsert a contact (by email identifier)
-const response = contact.upsert('email', 'contact@example.org', {
+let response = contact.upsert('email', 'contact@example.org', {
     // fields of request body according to RDStation documentation
+});
+
+```
+
+## Funnels
+
+RDStation Developer documentation:
+
+[https://developers.rdstation.com/pt-BR/reference/contacts/funnels](https://developers.rdstation.com/pt-BR/reference/contacts/funnels)
+
+```javascript
+import { Authentication, Funnel } from 'rdstation';
+
+const clientId = 'Your RDStation app client id';
+const clientSecret = 'Your RDStation app client secret';
+const authCode = 'Code returned on callback'
+
+const auth = new Authentication(clientId, clientSecret);
+const accessToken = auth.getAccessToken(authCode);
+
+const funnel = new Funnel(accessToken);
+
+// Get funnels by UUID
+let response = funnel.get('5408c5a3-4711-4f2e-8d0b-13407a3e30f3', 'default');
+
+// Get funnels by Email
+let response = funnel.getByEmail('contact@example.org', 'default');
+
+// Update funnel by UUID
+let response = funnel.update('5408c5a3-4711-4f2e-8d0b-13407a3e30f3', 'default', {
+    // request body parameters as documentation
+});
+
+// Update funnel by contact email
+let response = funnel.update('contact@example.org', 'default', {
+    // request body parameters as documentation
 });
 
 ```
