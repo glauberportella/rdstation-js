@@ -1,4 +1,4 @@
-import Request from './Request';
+import ApiResource from './ApiResource';
 
 export default class Contact extends ApiResource {
     /**

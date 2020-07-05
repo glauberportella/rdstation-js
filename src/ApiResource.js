@@ -1,3 +1,4 @@
+import Exception from './Exception/Exception';
 import Request from './Request';
 
 export default class ApiResource {
