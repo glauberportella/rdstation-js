@@ -1,0 +1,22 @@
+{
+  "name": "rdstation-demo",
+  "version": "1.0.0",
+  "description": "Demo for npm rdstation javascript library",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Demo",
+    "rdstation",
+    "library"
+  ],
+  "author": "Glauber Portella <glauberportella@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nunjucks": "^3.2.1",
+    "rdstation": "^1.1.1",
+    "sessionstorage": "^0.1.0"
+  }
+}
