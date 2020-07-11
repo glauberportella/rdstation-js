@@ -20,8 +20,8 @@ export default class Request {
             body = new URLSearchParams(qs);
         } else if (
             method.toString().toUpperCase() == 'POST' ||
-            methid.toString().toUpperCase() == 'PUT' ||
-            methid.toString().toUpperCase() == 'PATCH'
+            method.toString().toUpperCase() == 'PUT' ||
+            method.toString().toUpperCase() == 'PATCH'
         ) {
             body = JSON.stringify(data);
         }
@@ -56,13 +56,13 @@ export default class Request {
                         exception = new InvalidContentTypeHeader();
                     break;
                 }
-    
+
                 exception.errors = responseBody.errors || {};
 
                 throw exception;
             }
         }
-        
+
         return responseBody;
     }
 }

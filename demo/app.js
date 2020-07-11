@@ -7,30 +7,32 @@ const { default: Authentication } = require('rdstation/index');
 /**
  * Configs
  */
-// static assets
-app.use(express.static(__dirname + '/assets'));
-// template engine
+
+// Template engine
 nunjucks.configure('templates', {
     autoescape: true,
     express: app
 });
 
 /**
- * Your RDStation config - could be on ENV vars
+ * Your RDStation App config - could be on ENV vars, on a DB, etc.
  */
 const CLIENT_ID = 'd8a15079-1946-46ec-9d50-1fdb76934c0a';
 const CLIENT_SECRET = 'b4cbdf2a63204524bc2b33b79247a2c7';
 const REDIRECT_URL = 'http://localhost:3000/auth';
+
+
+/**
+ * Globals only for demo
+ */
+let authCode, accessToken, authentication;
+let contacts, funnels;
 
 /**
  * Routes
  */
 
 app.get('/', (req, res) => {
-    const authCode = sessionStorage.getItem('rdstation_auth_code');
-    let authentication = null;
-    let accessToken = null;
-
     if (authCode) {
         authentication = new Authentication(CLIENT_ID, CLIENT_SECRET);
         accessToken = authentication.getAccessToken(authCode);
@@ -48,8 +50,7 @@ app.get('/', (req, res) => {
  * RDStation App Callback returned from auth flow
  */
 app.get('/auth', (req, res) => {
-    const code = req.query.code;
-    sessionStorage.setItem('rdstation_auth_code', code);
+    authCode = req.query.code;
     res.redirect('/');
 });
 
