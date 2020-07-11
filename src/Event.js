@@ -221,7 +221,7 @@ export default class Event extends ApiResource {
      * @return {Object} JSON respone
      */
     chatFinished(payload) {
-        return this.sendEvent(this.EVENT_CHAT_FINISHED, thus.CDP_FAMILY, payload);
+        return this.sendEvent(this.EVENT_CHAT_FINISHED, this.CDP_FAMILY, payload);
     }
 
     /**

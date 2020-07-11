@@ -8,7 +8,7 @@ import InvalidContentTypeHeader from './Exception/InvalidContentTypeHeader';
 export default class Request {
     static API_ENDPOINT = 'https://api.rd.services';
 
-    static send(method, endpoint, data = {}, headers = {}, fetchInitOpts = {}) {
+    static async send(method, endpoint, data = {}, headers = {}, fetchInitOpts = {}) {
         let url = `${Request.API_ENDPOINT}${endpoint}`;
 
         let body = null;
@@ -20,18 +20,17 @@ export default class Request {
             body = new URLSearchParams(qs);
         } else if (
             method.toString().toUpperCase() == 'POST' ||
-            methid.toString().toUpperCase() == 'PUT' ||
-            methid.toString().toUpperCase() == 'PATCH'
+            method.toString().toUpperCase() == 'PUT' ||
+            method.toString().toUpperCase() == 'PATCH'
         ) {
             body = JSON.stringify(data);
         }
 
-        const response =  await fetch(url, {
+        const response =  await fetch(url, Object.assign({
             method,
             headers: new Headers(headers),
-            ...fetchInitOpts,
             body
-        });
+        }, fetchInitOpts));
 
         const responseBody = await response.json();
 
@@ -56,13 +55,13 @@ export default class Request {
                         exception = new InvalidContentTypeHeader();
                     break;
                 }
-    
+
                 exception.errors = responseBody.errors || {};
 
                 throw exception;
             }
         }
-        
+
         return responseBody;
     }
 }
