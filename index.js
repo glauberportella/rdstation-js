@@ -10,6 +10,7 @@ import ApiResource from './src/ApiResource';
 import Authentication from '.src/Authentication';
 import Contact from './src/Contact';
 import Event from '.src/Event';
+import Funnel from '.src/Funnel';
 import Request from '.src/Request';
 
 export {
@@ -23,6 +24,7 @@ export {
     ApiResource,
     Authentication,
     Contact,
+    Funnel,
     Event,
     Request
 };

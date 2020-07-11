@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>NPM rdstation Library Demo</title>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1>NPM <code>rdstation</code> Demo</h1>
+        <p>For test purpose you need to create a RDStation App on RD App store as stated on the repository README.md file.</p>
+      </div>
+    </header>
+    <main>
+      <div class="jumbotron">
+        <div class="container">
+          <h2>Authentication</h2>
+          <p>This step must be done on your system, to use the library we need to instantiate an <code>AccessToken</code> object passing the </code>code</code> returned from the RDStation API authentication flow.</p>
+          <p>For the demo we will start a ngrok tunnel to pass the HTTPS address to the RDStation App Store App configuration, the allowed callback URLs.</p>
+
+          <div class="text-center">
+            <a class="btn btn-lg btn-primary" href="https://api.rd.services/auth/dialog?client_id={{clientId}}&redirect_url={{redirectUrl}}">Authenticate</a>
+          </div>
+          {% if code %}
+            <hr>
+            <div class="text-center">RDStation Authentication Code: {{code}}</div>
+          {% endif %}
+        </div>
+      </div>
+
+      {% if accessToken %}
+      <div class="container">
+        <h2>Contacts</h2>
+        <p>Get contacts from RDStation account</p>
+        <div class="text-center">
+          <a class="btn btn-lg btn-primary" href="/contacts">Get Contacts</a>
+        </div>
+      </div>
+      <hr>
+      <div class="container">
+        <h2>Funnels</h2>
+        <p>Get funnels from RDStation account</p>
+        <div class="text-center">
+          <a class="btn btn-lg btn-primary" href="/contacts">Get Funnels</a>
+        </div>
+      </div>
+      {% endif %}
+    </main>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  </body>
+</html>
