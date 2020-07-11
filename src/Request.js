@@ -8,7 +8,7 @@ import InvalidContentTypeHeader from './Exception/InvalidContentTypeHeader';
 export default class Request {
     static API_ENDPOINT = 'https://api.rd.services';
 
-    static send(method, endpoint, data = {}, headers = {}, fetchInitOpts = {}) {
+    static async send(method, endpoint, data = {}, headers = {}, fetchInitOpts = {}) {
         let url = `${Request.API_ENDPOINT}${endpoint}`;
 
         let body = null;
@@ -26,12 +26,11 @@ export default class Request {
             body = JSON.stringify(data);
         }
 
-        const response =  await fetch(url, {
+        const response =  await fetch(url, Object.assign({
             method,
             headers: new Headers(headers),
-            ...fetchInitOpts,
             body
-        });
+        }, fetchInitOpts));
 
         const responseBody = await response.json();
 

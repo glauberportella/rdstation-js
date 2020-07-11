@@ -4,8 +4,8 @@ import Request from './Request';
 export default class ApiResource {
     /**
      * Constructor
-     * 
-     * @param {AccessToken} $accessToken 
+     *
+     * @param {AccessToken} $accessToken
      */
     constructor($accessToken) {
         this.accessToken = $accessToken;
@@ -26,29 +26,27 @@ export default class ApiResource {
     }
 
     /**
-     * 
-     * @param {string} method 
-     * @param {string} endpoint 
-     * @param {Object} data 
-     * @param {Object} headers 
-     * @param {Object} fetchInitOpts 
+     *
+     * @param {string} method
+     * @param {string} endpoint
+     * @param {Object} data
+     * @param {Object} headers
+     * @param {Object} fetchInitOpts
      */
     request(method, endpoint, data = {}, headers = {}, fetchInitOpts = {}) {
         try {
-            response = Request.send(method, endpoint, data, {
+            response = Request.send(method, endpoint, data, Object.assign({
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${this.accessToken.getToken()}`,
-                ...headers,
-            }, fetchInitOpts);
+                'Authorization': `Bearer ${this.accessToken.getToken()}`
+            }, headers), fetchInitOpts);
         } catch (e) {
             // invalid access token? refresh and try again
             if (e.hasErrorType(Exception.TYPE_UNAUTHORIZED)) {
                 this.accessToken.refresh();
-                response = Request.send(method, endpoint, data, {
+                response = Request.send(method, endpoint, data, Object.assign({
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${this.accessToken.getToken()}`,
-                    ...headers
-                }, fetchInitOpts);
+                    'Authorization': `Bearer ${this.accessToken.getToken()}`
+                }, headers), fetchInitOpts);
             } else {
                 throw $e;
             }
