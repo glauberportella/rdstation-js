@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const nunjucks = require('nunjucks');
-const Authentication = require('rdstation/lib/Authentication');
+const { Authentication } = require('rdstation/lib/index');
 
 /**
  * Configs
