@@ -8,6 +8,7 @@ import UnauthorizedRequest from './RDStation/Exception/UnauthorizedRequest';
 import AccessToken from './RDStation/AccessToken';
 import ApiResource from './RDStation/ApiResource';
 import Authentication from './RDStation/Authentication';
+import Conversion from './RDStation/Conversion';
 import Contact from './RDStation/Contact';
 import Event from './RDStation/Event';
 import Funnel from './RDStation/Funnel';
@@ -23,6 +24,7 @@ export {
     AccessToken,
     ApiResource,
     Authentication,
+    Conversion,
     Contact,
     Funnel,
     Event,

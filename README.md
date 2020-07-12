@@ -8,13 +8,32 @@ Single lib to allow RDStation integration on Javascript ES2015 projects.
 npm install rdstation
 ```
 
+## Conversion via API KEY
+
+For the simple conversion you can use the conversion with the api key, with no need to do the authentication process as needed for the others resources.
+
+[Conversion with Api Key](https://developers.rdstation.com/pt-BR/reference/api_key)
+
+```javascript
+import { Conversion } from 'rdstation';
+
+const conversion = new Conversion(apikey);
+conversion.send({
+    conversion_identifier: 'my_conversion_id',
+    email: 'lead@email.com',
+    name: 'Lead Name",
+    tags: ['my', 'tags']
+    // other fields as specified on documentation
+});
+```
+
 ## Authentication
 
 RDStations states on developer documentation:
 
 **Step 1**:
 
-Create an app on the [RD Station App Store](https://appstore.rdstation.com/pt-BR/publisher?_ga=2.209926551.30393113.1593959357-841494551.1590426705)
+Create an app on the [RD Station App Store](https://appstore.rdstation.com/pt-BR/publisher)
 
 **Step 2**:
 
