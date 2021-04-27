@@ -2,7 +2,6 @@ import Request from "./Request";
 
 export default class Conversion {
     constructor(apikey) {
-        super();
         this.apikey = apikey
     }
 
